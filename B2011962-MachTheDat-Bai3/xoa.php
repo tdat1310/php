@@ -18,6 +18,7 @@ $sql = "DELETE FROM student WHERE ID='".$id."'";
 
 
 if ($conn->query($sql) == TRUE) {
+  
   header('Location: taidulieu_bang1.php');
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;

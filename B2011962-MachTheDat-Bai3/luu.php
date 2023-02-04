@@ -12,14 +12,13 @@ if ($conn->connect_error) {
 }
 
 $date = date_create($_POST["birth"]);
-
-$sql = "INSERT INTO student (fullname, email, birthday) VALUES ('".$_POST["name"] ."', '".$_POST["email"] ."', '".$date ->format('Y-m-d') ."')";
+$major_array = explode("-", $_POST["major"]);
+print $major_array[0];
+$sql = "INSERT INTO student (fullname, email, birthday, major_id) VALUES ('".$_POST["name"] ."', '".$_POST["email"] ."', '".$date ->format('Y-m-d')."', '".$major_array[1]."')";
 
 if ($conn->query($sql) == TRUE) {
-  echo "Them sinh vien thanh cong";
-//neu thuc hien thanh cong, chung ta se cho di chuyen den taidulieu_bang.php
-  header('Location: taidulieu_bang.php');
-} else {
+  header('location: formnhap.php');
+} else { 
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
