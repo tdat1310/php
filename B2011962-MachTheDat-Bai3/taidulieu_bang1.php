@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
   //tieu de bang
  ?>
  <h1>Bảng dữ liệu sinh viên</h1>
- <table border=1><tr><th>ID</th><th>Họ tên</th><th>email</th><th>Ngày sinh</th><th>Major</th><th colspan="2">Hành động</th></tr>
+ <table border=1><tr><th>ID</th><th>Họ tên</th><th>email</th><th>Ngày sinh</th><th>Mã Major</th><th>Major</th><th colspan="2">Hành động</th></tr>
 <?php 
  // output data of each row
     foreach ($result_all as $row) {
@@ -40,6 +40,7 @@ $a = $row['major_id'];
 $result = $conn->query("SELECT * FROM major WHERE id = $a");
 if($result->num_rows > 0){
   while($row = $result->fetch_assoc()){
+    echo "<td style = 'text-align : center'>".$a."</td>";
     echo "<td>".$row['name_major']."</td>";
   }
 }
