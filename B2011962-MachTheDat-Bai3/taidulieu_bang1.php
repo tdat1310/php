@@ -29,6 +29,7 @@ if ($result->num_rows > 0) {
 <?php 
  // output data of each row
     foreach ($result_all as $row) {
+    $id = $row['id'];
 		$date = date_create($row['Birthday']);
         echo "<tr><td>" . $row["id"]. "</td><td>" . $row["fullname"]. "</td><td>" . $row["email"]. "</td><td>" . 
 		$date ->format('d-m-Y')
@@ -36,7 +37,7 @@ if ($result->num_rows > 0) {
 ?>
 <?php require_once "connect.php"?>
 <?php
-$a = $row['major_id'];
+$a = $row["major_id"];
 $result = $conn->query("SELECT * FROM major WHERE id = $a");
 if($result->num_rows > 0){
   while($row = $result->fetch_assoc()){
@@ -46,9 +47,9 @@ if($result->num_rows > 0){
 }
 ?>
 <?php echo "<td>"?>
-        <form method="post" action="xoa.php"> 
+        <form method="POST" action="xoa.php"> 
 		<input type="submit" name="action" value="xoa"/>
-		<input type="hidden" name="id" value="<?php echo $row['id']; ?>"/>
+		<input type="hidden" name="id" value="<?php echo $id; ?>"/>
         </form>
 <?php
     	echo "</td>";
@@ -56,7 +57,7 @@ if($result->num_rows > 0){
 ?>
         <form method="post" action="form_sua.php"> 
 		<input type="submit" name="action" value="sua"/>
-		<input type="hidden" name="id" value="<?php echo $row['id']; ?>"/>
+		<input type="hidden" name="id" value="<?php echo $id; ?>"/>
         </form>
 <?php
     	echo "</td></tr>";
