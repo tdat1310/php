@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
   $cookie_name = "user";
   $cookie_value = $row['email'] ;
   setcookie($cookie_name, $cookie_value, time() + (86400 / 24), "/");
-  setcookie("fullname", $row['fullname'], time() + (86400 / 24), "/");
+  setcookie("fullname", $row['fullname'], time() + (86400 / 24), "/" );
   setcookie("id", $row['id'], time() + (86400 / 24), "/");
   
   header('Location: homepage.php');
