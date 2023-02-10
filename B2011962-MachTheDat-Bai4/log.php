@@ -10,12 +10,10 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
-
-$sql = "select id, fullname, email from customers where email = '".$_POST["email"]."' and password = '".md5($_POST["pass"])."'";
-
+ $email = mysqli_real_escape_string($conn, $_POST['email']);
+ $pass = mysqli_real_escape_string($conn, $_POST['pass']);
+$sql = "select id, fullname, email from customers where email = '".$email."' and password = '".md5($pass)."'";
 $result = $conn->query($sql);
-
 if ($result->num_rows > 0) {
  
   $row = $result->fetch_assoc();
