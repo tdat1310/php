@@ -19,15 +19,13 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <h3 class="w3-wide"><b>
 	<?php
-	$cookie_name = "fullname";
-	echo 'Chao ban '.$_COOKIE[$cookie_name];
-	
+  session_start();
+	echo 'Chao ban '.$_SESSION['login_name'];
 	//them doan nay de lay duong dan anh
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
 	$dbname = "qlbanhang";
-
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
@@ -36,7 +34,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	}
 
 
-	$sql = "select img_profile from customers where id = '".$_COOKIE['id']."'";
+	$sql = "select img_profile from customers where id = '".$_SESSION['id']."'";
 	//echo $sql;
 	$result = $conn->query($sql);
 	
@@ -50,7 +48,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     src="'.'./img/'.$row['img_profile'].'" alt="Anh profile">';
 	}
 	?>
-	
+	 <button style = 'margin: 10px 0 0 30px; width : 60%'class="w3-button w3-block w3-black">
+   <a href="./thoat.php" style = 'text-decoration : none'> Log out</a>
+  </button>
 	</b></h3>
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">

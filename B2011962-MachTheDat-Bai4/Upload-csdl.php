@@ -3,7 +3,7 @@ $file_name = $_FILES['fileToUpload']['name'];
 $target_file ="img/".$file_name;;
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
+session_start();
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -56,7 +56,7 @@ if ($uploadOk == 0) {
 	  die("Connection failed: " . $conn->connect_error);
 	}
 
-	$id = $_COOKIE['id'];
+	$id = $_SESSION['id'];
 	$sql = "UPDATE customers set img_profile = '".$_FILES["fileToUpload"]["name"]."'";
 	$sql = $sql. " WHERE ID='".$id."'";
 	

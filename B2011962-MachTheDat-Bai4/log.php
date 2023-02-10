@@ -14,18 +14,14 @@ if ($conn->connect_error) {
  $pass = mysqli_real_escape_string($conn, $_POST['pass']);
 $sql = "select id, fullname, email from customers where email = '".$email."' and password = '".md5($pass)."'";
 $result = $conn->query($sql);
+session_start();
 if ($result->num_rows > 0) {
- 
   $row = $result->fetch_assoc();
-  
-  $cookie_name = "user";
-  $cookie_value = $row['email'] ;
-  setcookie($cookie_name, $cookie_value, time() + (86400 / 24), "/");
-  setcookie("fullname", $row['fullname'], time() + (86400 / 24), "/" );
-  setcookie("id", $row['id'], time() + (86400 / 24), "/");
-  
+  $_SESSION['user'] = $row['email'];
+  $_SESSION['login_name'] = $row['fullname'];
+  $_SESSION['password'] = $row['password'];
+  $_SESSION['id'] = $row['id'];
   header('Location: homepage.php');
-  
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
   //Tro ve trang dang nhap sau 3 giay
