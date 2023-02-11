@@ -48,8 +48,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     src="'.'./img/'.$row['img_profile'].'" alt="Anh profile">';
 	}
 	?>
+   <button style = 'margin: 10px 0 0 0; width : 107%'class="w3-button w3-block w3-black">
+   <a href='./form_sua_mk.php?<?php echo 'id='.$_SESSION['id'] ?>' style = 'text-decoration : none'> Change password</a>
+  </button>
 	 <button style = 'margin: 10px 0 0 30px; width : 60%'class="w3-button w3-block w3-black">
-   <a href="./thoat.php" style = 'text-decoration : none'> Log out</a>
+   <a href="./thoat.php?<?php echo 'id='.$_SESSION['id'] ?>" style = 'text-decoration : none'> Log out</a>
   </button>
 	</b></h3>
   </div>

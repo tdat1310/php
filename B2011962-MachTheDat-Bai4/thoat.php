@@ -1,8 +1,4 @@
 <?php
-session_start();
-$_SESSION['user'] = '';
-$_SESSION['login_name'] = '';
-$_SESSION['password'] = '';
-$_SESSION['id'] = '';
+session_destroy();
 header('Location: login.php');
 ?>
