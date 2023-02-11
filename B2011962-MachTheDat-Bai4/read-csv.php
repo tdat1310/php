@@ -5,6 +5,7 @@ $lines = file($name_file, FILE_IGNORE_NEW_LINES);
 //dua du lieu tu file csv vao mang:
 foreach ($lines as $key => $value)
 {
+    if($key < sizeof($lines) - 1)
     $csv[$key] = str_getcsv($value);
 }
 //in mang
